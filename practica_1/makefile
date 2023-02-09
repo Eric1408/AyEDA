@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++11 -g -Wall
 EXEC = bigInt
 
 # Nombre de los archivos fuente
-SRC = main.cc bigInt.cc usage.cc
+SRC = main.cc bigInt.h usage.cc
 
 # Nombre de los archivos de cabecera 
 HEADERS = bigInt.h usage.h
@@ -29,4 +29,3 @@ $(EXEC): $(OBJ)
 
 clean: 
 	rm -rf $(OBJ) $(EXEC)
-  

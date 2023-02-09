@@ -20,7 +20,7 @@
 #include <string>
 
 const std::string kHelp = "something";
-const std::String kExplain = "explanation";
+const std::string kExplain = "explanation";
 
 void Usage(int, char*[]);
 

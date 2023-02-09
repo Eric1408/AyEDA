@@ -16,11 +16,23 @@
  */
 
 #include <iostream>
+#include <fstream>
 
 #include "usage.h"
 
 int main(int argc, char* argv[]) {
   //Usage(argc, argv[]);
+  std::ifstream input = argv[0];
+  std::string lines;
+  
+  input >> lines;
+  int pos = lines.find("=");
+  std::string str_value = lines.substr(pos + 2);
+  int base = stoi(str_value);
+
+  while (std::getline(input, lines)) {
+    
+  }
 
   return 0;
 }
