@@ -46,21 +46,28 @@ int main() {
     std::cout << "carry: " <<  carry << std::endl;
     z = z % 16;
     std::cout << "z % : " << z << std::endl;
-    sum.push_back(z | 0x00);
+    if (z < 10) 
+      sum.push_back(z + '0');
+      //sum.push_back(z);
+    else
+      //sum.push_back(z); 
+      sum.push_back(z + 'A' - 10);
+      
+    //sum.push_back(z | 0x00);
   }
   // Imprime el resultado
   cout << "La suma es: " << endl;
   for (int i = sum.size()-1; i >= 0 ; --i) {
-    std::cout << short(sum[i] );
+    //std::cout << short(sum[i] );
     if (sum[i] >= 10) {
       //std::cout << "dentro de f \n";
-      //std::cout << char(sum[i] + 'A' -10);
+      std::cout << char(sum[i] + 'A' -10);
     } else {
       //std::cout << "dentro de a \n";
-      //std::cout << char(sum[i] + '0');
+      std::cout << char(sum[i] + '0');
       
     }
   }
-
+  std::cout << std::endl;
   return 0;
 }

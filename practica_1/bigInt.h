@@ -92,8 +92,7 @@ class BigInt {
     if(n != m)
       return n < m;
     while(n--)
-      if(a.digits[n] != b.digits[n])
-        return a.digits[n] < b.digits[n];
+      if(a.digits[n] != b.digits[n]) return a.digits[n] < b.digits[n];
     return false;
   }
   bool operator>=(const BigInt<Base>&) const;
@@ -113,8 +112,12 @@ class BigInt {
       int x = a[i++];
       int y = b[j++];
       int z = x + y + carry;
-      carry = z / 10;
-      z = z % 10;
+      //std::cout << "z + : " << z << std::endl;
+      carry = z / 16;
+      //std::cout << "carry: " << carry << std::endl;
+      z = z % 16;
+      //std::cout << "z % : " << z << std::endl;
+      //std::cout << "next step \n";
       if (z < 10) 
         sum.push_back(z + '0');
         //sum.push_back(z);
@@ -123,6 +126,8 @@ class BigInt {
         sum.push_back(z + 'A' - 10);
       //sum.push_back(z | 0x00);
     }
+    std::reverse(sum.begin(), sum.end());
+    //std::cout << "sum: " << sum << std::endl;
 
     return BigInt(sum);
   }
@@ -146,7 +151,6 @@ template<size_t Base>
 BigInt<Base>::BigInt(std::string& s) {
   int n = s.size();
   for (int i = n - 1; i >= 0; i--){
-    //if (s[i] > Base - 1) throw ("ERROR : Numero incorrecto"); 
     if (s[i] >= 'A' && s[i] <= 'F')
       digits_.push_back(s[i] - 'A' + 10);
     else 
@@ -156,7 +160,7 @@ BigInt<Base>::BigInt(std::string& s) {
 
 template<size_t Base>
 BigInt<Base>::BigInt(long n) {
-
+  
 }
 
 template<size_t Base> 
