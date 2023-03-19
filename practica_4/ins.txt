@@ -1,0 +1,43 @@
+EXPLORACION:
+1.- lineal -> i
+2.- cuadratico (combinar las sumas con las restas, puede ser a ambos lados) -> i^2 -> no hacer saltos hacia atras
+3.- doble -> t(x)
+4.- dispersion -> g[i](x)
+
+DISPERSION:
+1.- modulo -> h(x) x % t (t = tamaño de la tabla)
+2.- suma -> (metodo de los residuos y los sumamos)
+3.- pseudoaleatoria -> srand(Key), rand() % t
+
+--------------------------------------------------
+TABLA_HASH<KEY>                                   |
+- Tabla size                                      |
+- f(disp) (cuando rango de key es muy grande)     |
+- table                                           |
+- f(expl) (arg: puntero a funcion de exploracion) |
+-                                                 |  
+--------------------------------------------------
+
+Cuando existen sinonimos se utiliza la clase sequence
+
+
+--------------------------------------------------
+SEC<KEY>                                          |
+- Busqueda secuancial                             |  <--  LIST<KEY> 
+- isFull() = 0 (si es una lista es falso)         |
+- insert() = 0 (metodo insertar primero buscar en la tabla)    |
+-                                                 |  <--  BLOCK
+-                                                 |  
+--------------------------------------------------
+
+Tecnica para manejar las colisiones (funcion de dispersion) : 
+- Guardar los DNI en un objeto tipo lista -> estructura dinamica
+- Dispersion cerrada -> un array de punteros a la clase secuencia, le pasamos un puntero a la funcion de exploracion
+- 
+
+std::hash -> definido para los tipos basicos del 
+  lenguaje, como generar un numero a partir de ese tipo basico
+  
+
+MODIFICACION :
+- Admite cualquier tipo de dato?
