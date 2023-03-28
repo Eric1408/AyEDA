@@ -1,0 +1,3 @@
+Tamaño de la tabla, funcion de dispersion, tecnica de dispersion
+100                 Modulo                 abierta 
+100                 Suma                   cerrada  10  lineal 

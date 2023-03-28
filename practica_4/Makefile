@@ -1,8 +1,8 @@
 CC=g++
 CFLAGS=-std=c++17 -Wall -Wextra -Iinclude
-EXECUTABLE=bigint
+EXECUTABLE=hashTable
 
-OBJ=number bigint board
+OBJ=menu
 
 all: src/main.cc $(OBJ:%=build/%.o)
 	$(CC) $(CFLAGS) -o $(EXECUTABLE).out $^

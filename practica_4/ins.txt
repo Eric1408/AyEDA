@@ -41,3 +41,8 @@ std::hash -> definido para los tipos basicos del
 
 MODIFICACION :
 - Admite cualquier tipo de dato?
+
+
+----------------------------------------------------------------
+
+Dispersion cerrada <- funcion de exploracion 

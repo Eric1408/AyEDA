@@ -16,9 +16,13 @@
  */
 
 #include <iostream>
+#include <map>
 
-int main(int argc, char* argv[]) {
-  
+#include "menu.h"
+
+int main() {
+  Menu menu;
+  menu.start();
 
   return 0;
 }
