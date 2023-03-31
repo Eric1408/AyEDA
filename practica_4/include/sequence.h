@@ -4,12 +4,19 @@
 #include <vector>
 
 #include "exploration.h"
+#include "hashTable.h"
+
 template <class Key>
 class Sequence {
  public:
   virtual bool search (const Key&) const = 0;
   virtual bool insert (const Key&) = 0;
   virtual bool isFull () const = 0;
+
+  virtual unsigned size () const = 0;
+  virtual unsigned get (unsigned) const = 0;
+
+
  protected:
   std::vector<Key> data_;
 };
@@ -24,6 +31,9 @@ class List : public Sequence<Key> {
   bool search (const Key&) const;
   bool insert (const Key&);
   bool isFull () const { return false; }
+
+  unsigned size () const { return Sequence<Key>::data_.size(); }
+  unsigned get (unsigned i) const { return Sequence<Key>::data_[i]; }
 
 };
 
@@ -57,6 +67,9 @@ class Block : public Sequence<Key> {
   bool insert (const Key&);
   bool isFull () const;
 
+  unsigned size () const { return Sequence<Key>::data_.size(); }
+  unsigned get (unsigned i) const { return Sequence<Key>::data_[i]; }
+
  private:
   unsigned block_size_;
 };
@@ -73,9 +86,7 @@ bool Block<Key>::search(const Key& k) const {
 
 template <class Key>
 bool Block<Key>::insert(const Key& k) {
-  std::cout << "chivato insert en sequence 1\n";
   if (!search(k) && !isFull()) {
-    std::cout << "chivato insert en sequence 2\n";
     Sequence<Key>::data_.push_back(k);
     return true;
   }

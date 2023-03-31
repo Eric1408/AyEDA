@@ -24,7 +24,11 @@ class Menu {
   static const std::string DOUBLE_HASH_EXP;
   static const std::string REHASH_EXP;
 
+  static const std::string MENU_STR;
+  static const std::string INIT_STR;
+
   HashTable<long>* hash_table_;
+  void printMenu ();
 
  public:
   Menu ();
@@ -32,4 +36,6 @@ class Menu {
   void insert ();
   void search ();
   void stop ();
+  unsigned toPrime (int);
+  bool isPrime (unsigned);
 };

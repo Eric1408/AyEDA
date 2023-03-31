@@ -44,9 +44,8 @@ template <class Key>
 class feDoubleHash : public ExplorationFunction<Key> {
  private:
   DispersionFunction<Key>* disp_;
-  //unsigned n_;
+
  public:
-  //feDoubleHash (DispersionFunction<Key>* disp, unsigned size) : disp_{disp}, n_{size} {}
   feDoubleHash (DispersionFunction<Key>* disp) : disp_{disp} {}
   
   unsigned operator() (const Key&, unsigned) const;
@@ -75,8 +74,10 @@ unsigned feReHash<Key>::operator() (const Key& k, unsigned i) const {
   fdPseudo<Key> disp(size_);
   disp(k);
 
-  for (int j = 0; j < i-1 ; j++) {
+  for (unsigned j = 0; j < i-1 ; j++) {
     if (j == i) return rand();
     rand();
   }
+
+  return rand();
 }

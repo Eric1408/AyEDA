@@ -1,13 +1,7 @@
 #include "../include/menu.h"
 
 Menu::Menu () {
-  std::cout << "INTRODUZCA:\n"
-  "Tamaño de la tabla\n"
-  "Funcion de dispersion (modulo - suma - pseudoaleatoria[pseudo])\n"
-  "Tecnica de dispersion (lista - bloque)\n"
-  "Tamaño de bloque\n"
-  "Funcion de exploracion (lineal - cuadratica - dobleHash - redispersion)\n"
-  "EJEMPLO -> 100 pseudo bloque 10 lineal\n\n";
+  std::cout << Menu::INIT_STR;
   std::string line;
   std::getline(std::cin, line);
 
@@ -18,13 +12,13 @@ Menu::Menu () {
 
   std::smatch match;
   if (std::regex_search(line, match, Menu::fdPattern)) {
-    table_size = std::stoi(match[1]);
+    table_size = toPrime(std::stoi(match[1]));
+    
     if (match[2] == Menu::MODULE) {
       fd = new fdModule<long>(table_size);
     } else if (match[2] == Menu::SUM) {
       fd = new fdSum<long>(table_size);
     } else if (match[2] == Menu::PSEUDO) {
-      std::cout << "chivato pseudo \n";
       fd = new fdPseudo<long>(table_size);
     }
     
@@ -42,17 +36,33 @@ Menu::Menu () {
     }
   } 
   hash_table_ = new HashTable<long>(table_size, fd, fe, block_size);
-
 }
+
+bool Menu::isPrime(unsigned number) {
+  if (number <= 1) {
+    return false;
+  }
+
+  for (unsigned i = 2; i < number; i++) {
+    if (number % i == 0) return false;
+  }
+
+  return true;
+}
+
+unsigned Menu::toPrime(int number) {
+  while (!isPrime(number)) {
+    number--;
+  }
+  
+  return number;
+} 
 
 void Menu::start () {
   unsigned option;
 
   do {
-    long number;
-    std::cout << "============================== MENU ==============================\n";
-    std::cout << "Insertar[1]                  Buscar[2]                    Parar[3]\n" << std::endl;
-    std::cout << "Seleciona una opcion: ";
+    std::cout << Menu::MENU_STR;
     std::cin >> option;
     switch (option) {
     case 1:
@@ -62,6 +72,9 @@ void Menu::start () {
       search();
       break;
     case 3: 
+      printMenu();
+      break;
+    case 4:
       stop();
       break;
     default:
@@ -103,7 +116,20 @@ void Menu::stop() {
   exit(0);
 }
 
+void Menu::printMenu () {
+  hash_table_->print();
+}
 
+const std::string Menu::MENU_STR = "=============================== MENU ===============================\n"
+                                   "Insertar[1]           Buscar[2]         Tabla[3]            Parar[4]\n" 
+  "Seleciona una opcion: ";
+const std::string Menu::INIT_STR = "INTRODUZCA:\n"
+  "Tamaño de la tabla\n"
+  "Funcion de dispersion (modulo - suma - pseudoaleatoria[pseudo])\n"
+  "Tecnica de dispersion (lista - bloque)\n"
+  "Tamaño de bloque\n"
+  "Funcion de exploracion (lineal - cuadratica - dobleHash - redispersion)\n"
+  "EJEMPLO -> 100 pseudo bloque 10 lineal\n\n";
 
 const std::regex Menu::fdPattern = std::regex("(\\d+)\\s+(\\w+)\\s+(lista|(bloque)\\s+(\\d+)\\s+(\\w+))");
 

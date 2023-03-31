@@ -46,8 +46,9 @@ template <class Key>
 unsigned fdPseudo<Key>::operator()(const Key& k) const {
   Key tmp = k;
   std::srand(tmp);
-  std::cout << "chivato 2\n";
-  return std::rand() % table_size_;
+  unsigned result = std::rand() % table_size_;
+  
+  return result;
 }
 
 /**
