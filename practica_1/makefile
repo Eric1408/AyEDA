@@ -1,31 +1,29 @@
 # Nombre del compilador y flags
-CXX = g++
-CXXFLAGS = -std=c++11 -g -Wall
+CC=g++
+CFLAGS=-std=c++17 -Wall -Wextra -Iinclude
+LDFLAGS=
+EXECUTABLE=myProgram
+RESU=resultados.txt
 
-# Nombre del programa
-EXEC = bigInt
+# Listado de archivos fuente y objetos
+SRC_DIR=src
+INCLUDE_DIR=include
+BUILD_DIR=build
 
-# Nombre de los archivos fuente
-SRC = main.cc usage.cc
+# Obtén la lista de archivos fuente y genera la lista de archivos objeto
+SRCS=$(wildcard $(SRC_DIR)/*.cc)
+OBJS=$(patsubst $(SRC_DIR)/%.cc,$(BUILD_DIR)/%.o,$(SRCS))
 
-# Nombre de los archivos de cabecera 
-HEADERS = bigInt.h usage.h
+# Reglas de construcción
+all: $(EXECUTABLE)
 
-# Nombre de los archivos objeto (cambia todos los .cc por .o)
-OBJ = $(SRC:.cc=.o)
+$(EXECUTABLE): $(OBJS)
+    $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
-.PHONY: all clean
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cc
+    @mkdir -p $(@D)
+    $(CC) $(CFLAGS) -c -o $@ $<
 
-# Reglas por defecto
-all: $(EXEC)
-
-# Regla para compilar el ejecutable 
-$(EXEC): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-# Regla para compilar los archivos objeto
-%.o: %.cc $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $<
-
-clean: 
-	rm -rf $(OBJ) $(EXEC)
+clean:
+    -rm -rf $(BUILD_DIR) $(EXECUTABLE) $(RESU)
+    @echo "All cleaned!"
