@@ -18,12 +18,12 @@ OBJS=$(patsubst $(SRC_DIR)/%.cc,$(BUILD_DIR)/%.o,$(SRCS))
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJS)
-    $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cc
-    @mkdir -p $(@D)
-    $(CC) $(CFLAGS) -c -o $@ $<
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-    -rm -rf $(BUILD_DIR) $(EXECUTABLE) $(RESU)
-    @echo "All cleaned!"
+	-rm -rf $(BUILD_DIR) $(EXECUTABLE) $(RESU)
+	@echo "All cleaned!"
