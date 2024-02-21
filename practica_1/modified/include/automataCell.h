@@ -25,7 +25,7 @@ class Cell {
   
   // Sobrecarga del operador de inserción en flujo para la visualización en pantalla
   friend std::ostream& operator<<(std::ostream& os, const Cell& cell) {
-    os << (cell.getState() == 1 ? 'X' : '_');
+    os << (cell.getState() == 1 ? 'X' : ' ');
     return os;
   }
 };

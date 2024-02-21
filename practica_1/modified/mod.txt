@@ -1,0 +1,4 @@
+a la celula cambiarle la realcion de vecindad de manera que 
+cuando estemos en la cel 5
+vmaos a definir una relacion de vecindad que no tome a las dos adyacentes, si no a las que estan a distancia 2 
+o sea que las vecinas de la cel 5, sus vecinas serian 3 y 7
