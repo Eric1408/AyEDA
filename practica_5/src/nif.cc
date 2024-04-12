@@ -1,6 +1,17 @@
 #include "nif.h"
 
+
 void NIF::print() const {
+  std::string nifLength = std::to_string(nif_);
+  
+  // if nif_ begins with 0, it will be removed
+  if (nifLength.size() < 8) {
+    int zerosToAdd = 8 - nifLength.size();
+    for (int i = 0; i < zerosToAdd; i++) {
+      std::cout << "0";
+    }
+  }
+
   std::cout << nif_ << "-" << letter_ << std::endl;
 }
 
@@ -22,8 +33,7 @@ bool NIF::validateNIF(const std::string& nif) const {
 
 NIF::NIF(const std::string& nif) {
   if (validateNIF(nif)) {
-    nif_ = std::stoull(nif.substr(0, 8));
-    std::cout << "inside construct " << nif_ << std::endl;
+    nif_ = std::stoi(nif.substr(0, 8));
     letter_ = nif[8];
   } else {
     std::cerr << "Invalid NIF" << std::endl;
@@ -32,7 +42,7 @@ NIF::NIF(const std::string& nif) {
 
 
 std::ostream& operator<<(std::ostream& os, const NIF& nif) {
-  os << nif.nif_ << "-" << nif.letter_;
+  os << nif.getNif() << "-" << nif.getLetter();
   return os;
 }
 
@@ -43,7 +53,6 @@ NIF NIF::random() {
   // Generar un número de 8 dígitos aleatorio
   for (int i = 0; i < 8; i++) {
     nif += std::to_string(rand() % 10);
-    //std::cout << nif << std::endl;
   }
 
   // Calcular la letra de control
@@ -55,6 +64,6 @@ NIF NIF::random() {
   char letra_control = letras_control[sum % 23];
 
   nif += letra_control;
-  std::cout << nif << std::endl;
+  //std::cout << nif << std::endl;
   return NIF(nif);
 }

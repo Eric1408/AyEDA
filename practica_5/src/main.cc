@@ -36,21 +36,6 @@ void menu(int argc, char* argv[]) {
   // -size
   Block<NIF> data(size);
 
-
-  // -ord
-  SortAlgrthm<NIF>* sort;
-  if (ord == "selection") {
-    sort = new Selection<NIF>(data, size);
-  } else if (ord == "quick") {
-    sort = new QuickSort<NIF>(data, size);
-  } else if (ord == "heap") {
-    sort = new HeapSort<NIF>(data, size);
-  } else if (ord == "shell") {
-    sort = new ShellSort<NIF>(data, size);
-  } else if (ord == "radix") {
-    sort = new RadixSort<NIF>(data, size);
-  }
-
   // -init
   if (init == "manual") {
     std::cout << "Enter " << size << " NIFs" << std::endl;
@@ -75,8 +60,32 @@ void menu(int argc, char* argv[]) {
       data.insert(NIF(nif));
     }
   }
-
   print(data, size);
+
+  // -ord
+  SortAlgrthm<NIF>* sort;
+  if (ord == "selection") {
+    sort = new Selection<NIF>(data, size);
+    //sort->print();
+  } else if (ord == "quick") {
+    sort = new QuickSort<NIF>(data, size);
+  } else if (ord == "heap") {
+    sort = new HeapSort<NIF>(data, size);
+  } else if (ord == "shell") {
+    sort = new ShellSort<NIF>(data, size);
+  } else if (ord == "radix") {
+    sort = new RadixSort<NIF>(data, size);
+  }
+
+  // -trace
+  if (trace == "y") {
+    sort->trace();
+  } else {
+    sort->sort();
+  }
+
+  std::cout << "Sorted\n";
+  sort->print();
 }
 
 int main(int argc, char* argv[]) {

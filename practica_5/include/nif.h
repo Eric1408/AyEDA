@@ -21,7 +21,13 @@ class NIF {
   bool operator<=(const NIF& nif) const { return nif_ <= nif.nif_; }
   bool operator>=(const NIF& nif) const { return nif_ >= nif.nif_; }
 
-  static NIF random();
+  int operator/(int nif) const { return nif_ / nif; }
+
+  int getNif() const { return nif_; }
+  char getLetter() const { return letter_; }
+
 
   friend std::ostream& operator<<(std::ostream&, const NIF&);
+
+  static NIF random();
 };
