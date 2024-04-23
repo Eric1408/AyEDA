@@ -1,0 +1,96 @@
+99999999-J
+88888888-H
+77777777-G
+66666666-F
+55555555-E
+44444444-D
+33333333-C
+22222222-B
+11111111-A
+00000000-I
+
+pivot: 0-I
+out 'for' swap:
+	swap between 99999999-J and 0-I
+Number of swaps: 0
+
+After partition at index 0: 0-I 88888888-H 77777777-G 66666666-F 55555555-E 44444444-D 33333333-C 22222222-B 11111111-A 99999999-J 
+pivot: 99999999-J
+swap between 88888888-H [i] 1 and 88888888-H [j] 1
+swap between 77777777-G [i] 2 and 77777777-G [j] 2
+swap between 66666666-F [i] 3 and 66666666-F [j] 3
+swap between 55555555-E [i] 4 and 55555555-E [j] 4
+swap between 44444444-D [i] 5 and 44444444-D [j] 5
+swap between 33333333-C [i] 6 and 33333333-C [j] 6
+swap between 22222222-B [i] 7 and 22222222-B [j] 7
+swap between 11111111-A [i] 8 and 11111111-A [j] 8
+out 'for' swap:
+	swap between 99999999-J and 99999999-J
+Number of swaps: 8
+
+After partition at index 9: 88888888-H 77777777-G 66666666-F 55555555-E 44444444-D 33333333-C 22222222-B 11111111-A 99999999-J 
+pivot: 11111111-A
+out 'for' swap:
+	swap between 88888888-H and 11111111-A
+Number of swaps: 0
+
+After partition at index 1: 11111111-A 77777777-G 66666666-F 55555555-E 44444444-D 33333333-C 22222222-B 88888888-H 
+pivot: 88888888-H
+swap between 77777777-G [i] 2 and 77777777-G [j] 2
+swap between 66666666-F [i] 3 and 66666666-F [j] 3
+swap between 55555555-E [i] 4 and 55555555-E [j] 4
+swap between 44444444-D [i] 5 and 44444444-D [j] 5
+swap between 33333333-C [i] 6 and 33333333-C [j] 6
+swap between 22222222-B [i] 7 and 22222222-B [j] 7
+out 'for' swap:
+	swap between 88888888-H and 88888888-H
+Number of swaps: 6
+
+After partition at index 8: 77777777-G 66666666-F 55555555-E 44444444-D 33333333-C 22222222-B 88888888-H 
+pivot: 22222222-B
+out 'for' swap:
+	swap between 77777777-G and 22222222-B
+Number of swaps: 0
+
+After partition at index 2: 22222222-B 66666666-F 55555555-E 44444444-D 33333333-C 77777777-G 
+pivot: 77777777-G
+swap between 66666666-F [i] 3 and 66666666-F [j] 3
+swap between 55555555-E [i] 4 and 55555555-E [j] 4
+swap between 44444444-D [i] 5 and 44444444-D [j] 5
+swap between 33333333-C [i] 6 and 33333333-C [j] 6
+out 'for' swap:
+	swap between 77777777-G and 77777777-G
+Number of swaps: 4
+
+After partition at index 7: 66666666-F 55555555-E 44444444-D 33333333-C 77777777-G 
+pivot: 33333333-C
+out 'for' swap:
+	swap between 66666666-F and 33333333-C
+Number of swaps: 0
+
+After partition at index 3: 33333333-C 55555555-E 44444444-D 66666666-F 
+pivot: 66666666-F
+swap between 55555555-E [i] 4 and 55555555-E [j] 4
+swap between 44444444-D [i] 5 and 44444444-D [j] 5
+out 'for' swap:
+	swap between 66666666-F and 66666666-F
+Number of swaps: 2
+
+After partition at index 6: 55555555-E 44444444-D 66666666-F 
+pivot: 44444444-D
+out 'for' swap:
+	swap between 55555555-E and 44444444-D
+Number of swaps: 0
+
+After partition at index 4: 44444444-D 55555555-E 
+Sorted
+00000000-I
+11111111-A
+22222222-B
+33333333-C
+44444444-D
+55555555-E
+66666666-F
+77777777-G
+88888888-H
+99999999-J
